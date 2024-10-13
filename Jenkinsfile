@@ -9,8 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
-                sh 'false'
+                unstable("Not all tests are passing...")
             }
         }
         stage('Deploy') {
