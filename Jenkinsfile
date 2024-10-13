@@ -1,15 +1,17 @@
 pipeline {
-    agent any
+    agent {
+        dockerfile true
+    }
     
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                sh 'mkdir build && cd build && cmake .. && make'
             }
         }
         stage('Test') {
             steps {
-                unstable("Not all tests are passing...")
+                sh 'cd build && make test'
             }
         }
         stage('Deploy') {
