@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'rm -rf build || true'
                 sh 'mkdir build && cd build && cmake .. && make'
             }
         }
